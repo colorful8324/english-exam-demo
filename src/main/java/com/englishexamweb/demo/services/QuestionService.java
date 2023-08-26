@@ -4,6 +4,7 @@ import com.englishexamweb.demo.entities.*;
 import com.englishexamweb.demo.exceptions.*;
 import com.englishexamweb.demo.repositories.*;
 import com.englishexamweb.demo.util.CsvUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -12,15 +13,10 @@ import java.io.InputStream;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class QuestionService implements IQuestionService {
     private final QuestionRepository questionRepository;
     private final CsvUtils csvUtils;
-
-    @Autowired
-    public QuestionService(QuestionRepository questionRepository, CsvUtils csvUtils) {
-        this.questionRepository = questionRepository;
-        this.csvUtils = csvUtils;
-    }
 
     @Override
     public List<Question> findAllQuestions() {

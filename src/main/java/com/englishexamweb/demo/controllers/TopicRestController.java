@@ -2,20 +2,17 @@ package com.englishexamweb.demo.controllers;
 
 import com.englishexamweb.demo.entities.*;
 import com.englishexamweb.demo.services.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/topics")
 public class TopicRestController {
-    private TopicService topicService;
-
-    @Autowired
-    public TopicRestController(TopicService topicService) {
-        this.topicService = topicService;
-    }
+    private final TopicService topicService;
 
     @GetMapping
     public List<Topic> findAllTopics() {

@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 @ControllerAdvice
 public class ControllerAdvisor {
-    @ExceptionHandler({QuestionNotFoundException.class, TopicNotFoundException.class, ExamNotFoundException.class, CSVException.class})
+    @ExceptionHandler({QuestionNotFoundException.class, TopicNotFoundException.class,
+            ExamNotFoundException.class, CSVException.class})
     public ResponseEntity<ErrorResponse> handleEntityException(Exception exc) {
         ErrorResponse error = new ErrorResponse();
         error.setStatus(HttpStatus.NOT_FOUND.value());

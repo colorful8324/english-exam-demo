@@ -8,7 +8,6 @@ import lombok.*;
 @Table(name = "questions")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @Builder
 public class Question {
@@ -17,7 +16,7 @@ public class Question {
     @Column(name = "qu_id")
     private Integer id;
 
-    @Column(name = "qu_content")
+    @Column(name = "qu_content", length = 500)
     private String content;
 
     @Column(name = "qu_option1")
@@ -41,14 +40,11 @@ public class Question {
     @Column(name = "qu_type")
     private Integer type;
 
-//    @Column(name = "tp_id")
-//    private Integer topicId;
-
-    @ManyToOne
     @JoinColumn(name = "tp_id")
+    @ManyToOne
     private Topic topic;
 
-    @Column(name = "DIFFICULT_LEVEL")
+    @Column(name = "difficult_level")
     private Integer level;
 
     @Transient
